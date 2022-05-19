@@ -1,0 +1,96 @@
+﻿<Window x:Class="ImageMaker.Main.ResetApp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageMaker.Main"
+        mc:Ignorable="d"
+        Title="FirstOpening" 
+        Height="200" 
+        Width="300"
+        AllowsTransparency="True" 
+        Background="Transparent" 
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <Style x:Key="Button">
+            <Setter Property="Button.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Border Name="Name" 
+                                    CornerRadius="10" 
+                                    Background="#FF57C49E" 
+                                    Padding="0" 
+                                    BorderThickness="0" 
+                                    BorderBrush="#FF57C49E">
+                                <Label Name="NameLable" 
+                                       Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" 
+                                       Foreground="White" 
+                                       FontFamily="Arial Rounded MT Bold" 
+                                       FontSize="17" 
+                                       Background="#0057C49E" 
+                                       HorizontalContentAlignment="Center" 
+                                       VerticalContentAlignment="Center" />
+                            </Border>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" 
+                                     Value="true">
+                                <Setter TargetName="Name"
+                                        Property="Background" 
+                                        Value="#FF57C49E"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseDirectlyOver" 
+                                     Value="true">
+                                <Setter TargetName="Name" 
+                                        Property="Background" 
+                                        Value="#FF4d957c"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Width="auto" 
+            Height="auto" 
+            Name="border1" 
+            CornerRadius="30,30,30,30" 
+            Background="#202020" 
+            BorderThickness="2" 
+            BorderBrush="#FFC45757">
+        <Grid>
+            <TextBlock x:Name="Text1" 
+                       Text="If you move the seed, the settings will be reset. After clicking the «Yes» button, the application will close. You will need to open it again. Are you sure you want to reinstall the app?" 
+                       TextWrapping="Wrap" 
+                       Foreground="White" 
+                       FontFamily="Arial Rounded MT Bold" 
+                       FontSize="15" 
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Top" 
+                       Margin="20,20,20,0" 
+                       Width="auto"/>
+            <Button Style="{StaticResource Button}" 
+                    Content="Yes" 
+                    Margin="23,0,0,23" 
+                    Click="Button_Click" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Bottom" 
+                    Width="86" 
+                    Height="31"/>
+            <Button Style="{StaticResource Button}" 
+                    Content="No" 
+                    Margin="0,0,23,23" 
+                    Click="Button_Click_1" 
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Right" 
+                    Width="86" 
+                    Height="31"/>
+        </Grid>
+    </Border>
+</Window>
